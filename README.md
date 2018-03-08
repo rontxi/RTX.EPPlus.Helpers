@@ -1,24 +1,23 @@
 
-== EPPlus Library Helper ==
+#EPPlus Library Helper
 
-=== Usage ===
+###Usage
 
 Decorate whith attributes 
 
 [DisplayName("Column Title")] for custom column name.
 
-[EPPlusColumnFormat()]
-for:
-format 
-total_formula 
-date_format
-date_time_format
-currency_format
-pivottable_position
-pivottable_function
-horizontal_alignment
+[EPPlusColumnFormat()] for:
+* format 
+* total_formula 
+* date_format
+* date_time_format
+* currency_format
+* pivottable_position
+* pivottable_function
+* horizontal_alignment
 
-== Example code ===
+###Example code
 
 ```csharp
 using (ExcelPackage pck = new ExcelPackage())
