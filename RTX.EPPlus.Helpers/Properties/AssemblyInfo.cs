@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("RTX.EPPlus.Helpers")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("EEPlus Library Helper")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("RTX.EPPlus.Helpers")]
