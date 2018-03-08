@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RTX.EPPlus.Helpers", "RTX.EPPlus.Helpers.csproj", "{B2B479D7-153E-48D5-996F-CFA2EF62A707}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RTX.EPPlus.Tests", "..\RTX.EPPlus.Tests\RTX.EPPlus.Tests.csproj", "{95EEE2B2-B206-46B8-82E6-3B61212853BC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F3B67D5E-3CFA-436C-9DC7-617B50A8E24A}"
+	ProjectSection(SolutionItems) = preProject
+		..\README.md = ..\README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B2B479D7-153E-48D5-996F-CFA2EF62A707}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2B479D7-153E-48D5-996F-CFA2EF62A707}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2B479D7-153E-48D5-996F-CFA2EF62A707}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2B479D7-153E-48D5-996F-CFA2EF62A707}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95EEE2B2-B206-46B8-82E6-3B61212853BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95EEE2B2-B206-46B8-82E6-3B61212853BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95EEE2B2-B206-46B8-82E6-3B61212853BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95EEE2B2-B206-46B8-82E6-3B61212853BC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {93B79A35-86A2-45DD-AEC7-55E6B2FA1323}
+	EndGlobalSection
+EndGlobal
