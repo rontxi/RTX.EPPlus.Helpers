@@ -13,10 +13,10 @@ namespace RTX.EPPlus.Tests
     {
       using (ExcelPackage pck = new ExcelPackage())
       {
-        var ws_dades = pck.AddWorkSheet("Dades");
+        var ws_dades = pck.AddWorkSheet("DataSheet");
         ws_dades.AddTable<ExportItem>("Table1", ExportItem.GetTestData(), ShowTotal:true);
-        var ws_promotor = pck.AddWorkSheet("Promotor");
-        ws_promotor.AddPivotTable<ExportItem>("Promotors", ws_dades.Cells[ws_dades.Dimension.Address]);
+        var ws_promotor = pck.AddWorkSheet("PivottableSheet");
+        ws_promotor.AddPivotTable<ExportItem>("PivotTable", ws_dades.Cells[ws_dades.Dimension.Address]);
 
         string path = @"C:\temp\test1.xlsx";
         Stream stream = File.Create(path);
