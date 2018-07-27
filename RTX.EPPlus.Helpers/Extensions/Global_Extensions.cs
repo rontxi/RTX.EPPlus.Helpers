@@ -1,5 +1,4 @@
-﻿using OfficeOpenXml;
-using OfficeOpenXml.Style;
+﻿using OfficeOpenXml.Style;
 using OfficeOpenXml.Table;
 using OfficeOpenXml.Table.PivotTable;
 using RTX.EPPlus.Helpers;
@@ -8,8 +7,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OfficeOpenXml
 {
@@ -34,19 +31,19 @@ namespace OfficeOpenXml
         var att = (EPPlusColumnFormatAttribute)Attribute.GetCustomAttribute(property, typeof(EPPlusColumnFormatAttribute));
         if (att != null)
         {
-          Global_Extensions.setformat(ws, current_index, data.Count(), att, PrintHeaders);
+          setformat(ws, current_index, data.Count(), att, PrintHeaders);
 
           //Totals
           if (ShowTotal && att.total_formula != EPPlusColumnTotalFormula.None)
           {
-            table.Columns[current_index - 1].TotalsRowFormula = string.Format("SUBTOTAL({0},[{1}])", (int)att.total_formula, table.Columns[current_index-1].Name);
-            if (att.format == EPPlusColumnFormats.Currency)
+            table.Columns[current_index - 1].TotalsRowFormula = string.Format("SUBTOTAL({0},[{1}])", (int)att.total_formula, table.Columns[current_index - 1].Name);
+            if (att.format == EPPlusColumnFormats.Currency || att.format == EPPlusColumnFormats.Percent)
             {
-              ws.Cells[ws.Dimension.End.Row, current_index].Style.Numberformat.Format = Global_Extensions.getFormat(att);
+              ws.Cells[ws.Dimension.End.Row, current_index].Style.Numberformat.Format = getFormat(att);
             }
           }
         }
-        
+
         current_index++;
       }
       ws.Cells[ws.Dimension.Address].AutoFitColumns();
@@ -55,7 +52,7 @@ namespace OfficeOpenXml
 
     public static ExcelPivotTable AddPivotTable<T>(this ExcelWorksheet ws, string TableName, ExcelRangeBase dataRange)
     {
-      var pivotTable = ws.PivotTables.Add(ws.Cells[1,1], dataRange, TableName);
+      var pivotTable = ws.PivotTables.Add(ws.Cells[1, 1], dataRange, TableName);
       pivotTable.MultipleFieldFilters = true;
       pivotTable.RowGrandTotals = true;
       pivotTable.ColumGrandTotals = true;
@@ -91,7 +88,7 @@ namespace OfficeOpenXml
                 var f = pivotTable.DataFields.Add(field);
                 f.Function = att.pivottable_function;
                 f.Name = field_name;
-                f.Format = Global_Extensions.getFormat(att);
+                f.Format = getFormat(att);
               }
               else if (att.pivottable_position == EPPPlusPivotTablePosition.rowField)
               {
@@ -111,8 +108,8 @@ namespace OfficeOpenXml
     {
       using (ExcelRange col = ws.Cells[PrintHeaders ? 2 : 1, index, data_rows_count + (PrintHeaders ? 1 : 0), index])
       {
-        col.Style.Numberformat.Format = Global_Extensions.getFormat(att);
-        col.Style.HorizontalAlignment = Global_Extensions.GetHorizontalAlignment(att);
+        col.Style.Numberformat.Format = getFormat(att);
+        col.Style.HorizontalAlignment = GetHorizontalAlignment(att);
       }
     }
 
@@ -129,6 +126,10 @@ namespace OfficeOpenXml
       else if (att.format == EPPlusColumnFormats.Currency)
       {
         return att.currency_format;
+      }
+      else if (att.format == EPPlusColumnFormats.Percent)
+      {
+        return att.percent_format;
       }
       else
       {
